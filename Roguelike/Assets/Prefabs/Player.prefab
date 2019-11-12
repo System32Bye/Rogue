@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 95456089136927372}
   - component: {fileID: 54025256180386806}
   - component: {fileID: 65952259299599756}
+  - component: {fileID: 114403078548405240}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2108,6 +2109,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114403078548405240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040873062944052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db83215baf68a9c46997a894e5300d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 0.1
+  blockingLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallDamage: 1
+  pointsPerFood: 10
+  pointsPerSoda: 20
+  restartLevelDelay: 1
 --- !u!137 &137025537540600200
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
