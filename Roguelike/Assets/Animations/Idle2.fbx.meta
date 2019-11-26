@@ -103,7 +103,7 @@ ModelImporter:
     400094: Toes_R
     400096: UpperLeg_L
     400098: UpperLeg_R
-    7400000: mixamo.com
+    7400000: Mon_Idle2
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
@@ -119,11 +119,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'UpperLeg_L'
-      : position error = 99.841682 mm\n\t'LowerLeg_L' : position error = 360.750519
-      mm\n\t'Ankle_L' : position error = 340.706909 mm\n\t'Ball_L' : position error
-      = 101.944061 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -139,7 +135,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Mon_Idle2
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 319

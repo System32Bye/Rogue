@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f6f1665f0f393e04b853850c03f2877d
+guid: 966d2abccd42ead4a9d7f591e838c898
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -35,8 +35,8 @@ ModelImporter:
     100058: IndexFinger_041
     100060: LowerLeg_L
     100062: LowerLeg_R
-    100064: //RootNode
-    100066: Neck
+    100064: Neck
+    100066: //RootNode
     100068: Root
     100070: Shoulder_L
     100072: Shoulder_R
@@ -85,8 +85,8 @@ ModelImporter:
     400058: IndexFinger_041
     400060: LowerLeg_L
     400062: LowerLeg_R
-    400064: //RootNode
-    400066: Neck
+    400064: Neck
+    400066: //RootNode
     400068: Root
     400070: Shoulder_L
     400072: Shoulder_R
@@ -103,7 +103,7 @@ ModelImporter:
     400094: Toes_R
     400096: UpperLeg_L
     400098: UpperLeg_R
-    7400000: Mon_Attack2
+    7400000: Player_Walk
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
@@ -135,17 +135,17 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mon_Attack2
+      name: Player_Walk
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 157
+      lastFrame: 62
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
