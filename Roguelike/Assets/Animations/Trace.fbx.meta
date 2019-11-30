@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bd39fc4f25b5c1d4d8234e161ce154a0
+guid: cb65a1cf64108f3469c259407d3901ff
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -35,22 +35,22 @@ ModelImporter:
     100058: IndexFinger_041
     100060: LowerLeg_L
     100062: LowerLeg_R
-    100064: //RootNode
-    100066: Neck
-    100068: Root
-    100070: Shoulder_L
-    100072: Shoulder_R
-    100074: Spine_01
-    100076: Spine_02
-    100078: Spine_03
-    100080: Thumb_01
-    100082: Thumb_011
-    100084: Thumb_02
-    100086: Thumb_021
-    100088: Thumb_03
-    100090: Thumb_031
-    100092: Toes_L
-    100094: Toes_R
+    100064: Neck
+    100066: Root
+    100068: Shoulder_L
+    100070: Shoulder_R
+    100072: Spine_01
+    100074: Spine_02
+    100076: Spine_03
+    100078: Thumb_01
+    100080: Thumb_011
+    100082: Thumb_02
+    100084: Thumb_021
+    100086: Thumb_03
+    100088: Thumb_031
+    100090: Toes_L
+    100092: Toes_R
+    100094: //RootNode
     100096: UpperLeg_L
     100098: UpperLeg_R
     400000: Ankle_L
@@ -85,25 +85,25 @@ ModelImporter:
     400058: IndexFinger_041
     400060: LowerLeg_L
     400062: LowerLeg_R
-    400064: //RootNode
-    400066: Neck
-    400068: Root
-    400070: Shoulder_L
-    400072: Shoulder_R
-    400074: Spine_01
-    400076: Spine_02
-    400078: Spine_03
-    400080: Thumb_01
-    400082: Thumb_011
-    400084: Thumb_02
-    400086: Thumb_021
-    400088: Thumb_03
-    400090: Thumb_031
-    400092: Toes_L
-    400094: Toes_R
+    400064: Neck
+    400066: Root
+    400068: Shoulder_L
+    400070: Shoulder_R
+    400072: Spine_01
+    400074: Spine_02
+    400076: Spine_03
+    400078: Thumb_01
+    400080: Thumb_011
+    400082: Thumb_02
+    400084: Thumb_021
+    400086: Thumb_03
+    400088: Thumb_031
+    400090: Toes_L
+    400092: Toes_R
+    400094: //RootNode
     400096: UpperLeg_L
     400098: UpperLeg_R
-    7400000: Mon_Attack1
+    7400000: Trace
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
@@ -121,7 +121,11 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Ball_R' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'Ball_L' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -135,10 +139,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mon_Attack1
+      name: Trace
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 277
+      lastFrame: 148
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -148,7 +152,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
