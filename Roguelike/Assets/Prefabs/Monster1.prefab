@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 195327237751783180}
   - component: {fileID: 54092116787550256}
   - component: {fileID: 136816289514226592}
-  - component: {fileID: 114691946436783718}
+  - component: {fileID: 114624632741230680}
   m_Layer: 0
   m_Name: Monster1
   m_TagString: Untagged
@@ -2098,7 +2098,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114691946436783718
+--- !u!114 &114624632741230680
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2110,8 +2110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  traceDist: 4
-  attackDist: 1
+  traceDist: 3.5
+  attackDist: 1.2
 --- !u!136 &136816289514226592
 CapsuleCollider:
   m_ObjectHideFlags: 1

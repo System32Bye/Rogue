@@ -9,31 +9,30 @@ public class EnemyControll : MonoBehaviour {
         Idle, Trace, Attack, Dead
     };
     public CurrentState curState = CurrentState.Idle;
+    public int playerDamage;
 
     private Transform _transform;
     private Transform playerTransform;
     private NavMeshAgent nvAgent;
     private Animator animator;
     
-
     //추적 거리
     public float traceDist = 3.5f;
 
     //공격 거리
-    public float attackDist = 1.2f;
+    public float attackDist = 0.9f;
 
     //사망 확인
     private bool isDead = false;
 
 	// Use this for initialization
 	void Start () {
+        GameManager.instance.AddEnemyToLise(this);
         _transform = this.gameObject.GetComponent<Transform>();
         playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         nvAgent = this.gameObject.GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
-        //추적 대상의 위치를 성정하면 바로 추적
-        //nvAgent.destination = playerTransform.position;
+        
 
         StartCoroutine(this.CheckState());
         StartCoroutine(this.CheckStateForAction());
@@ -41,7 +40,7 @@ public class EnemyControll : MonoBehaviour {
 
     IEnumerator CheckState() {
         while (!isDead) {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
 
             float dist = Vector3.Distance(playerTransform.position, _transform.position);
 
@@ -66,7 +65,7 @@ public class EnemyControll : MonoBehaviour {
                     animator.SetBool("isTrace", false);
                     break;
                 case CurrentState.Trace:
-                    nvAgent.destination = playerTransform.position*0.8f;
+                    nvAgent.destination = playerTransform.position;
                     nvAgent.Resume();
                     animator.SetBool("isTrace", true);
                     break;
