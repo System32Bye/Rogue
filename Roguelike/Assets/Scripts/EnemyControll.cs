@@ -17,10 +17,10 @@ public class EnemyControll : MonoBehaviour {
     private Animator animator;
     
     //추적 거리
-    public float traceDist = 3.5f;
+    public float traceDist = 3.2f;
 
     //공격 거리
-    public float attackDist = 0.9f;
+    public float attackDist = 0.7f;
 
     //사망 확인
     private bool isDead = false;
@@ -44,13 +44,16 @@ public class EnemyControll : MonoBehaviour {
 
             float dist = Vector3.Distance(playerTransform.position, _transform.position);
 
-            if (dist < attackDist) {
+            if (dist < attackDist)
+            {
                 curState = CurrentState.Attack;
             }
-            else if (dist < traceDist) {
+            else if (dist > attackDist && dist < traceDist)
+            {
                 curState = CurrentState.Trace;
             }
-            else {
+            else
+            {
                 curState = CurrentState.Idle;
             }
         }
@@ -61,13 +64,15 @@ public class EnemyControll : MonoBehaviour {
         while (!isDead) {
             switch (curState) {
                 case CurrentState.Idle:
-                    nvAgent.Stop();
+                    //nvAgent.Stop();
                     animator.SetBool("isTrace", false);
+                    nvAgent.isStopped = true;
                     break;
                 case CurrentState.Trace:
                     nvAgent.destination = playerTransform.position;
-                    nvAgent.Resume();
+                    //nvAgent.Resume();
                     animator.SetBool("isTrace", true);
+                    nvAgent.isStopped = false;
                     break;
                 case CurrentState.Attack:
                     animator.SetTrigger("monAttack");

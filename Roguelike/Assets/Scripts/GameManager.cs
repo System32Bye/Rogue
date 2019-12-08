@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public float levelStartDelay = 2f;
     public static GameManager instance = null;
     public BoardManager boardScript;
-    public int playerFoodPoints = 100;
+    public float playerFoodPoints = 100.0f;
 
     private Text levelText;
     private GameObject levelImage;
@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour {
 
         levelImage = GameObject.Find("LevelImage");
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
-        levelText.text = level + " Floor";
+        levelText.text = "Floor " + level;
         levelImage.SetActive(true);
         Invoke("HideLevelImage", levelStartDelay);
-
+        
         enemies.Clear();
         boardScript.SetupScene(level);
     }

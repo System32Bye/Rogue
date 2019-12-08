@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     bool IsWalk = false;
 
     private Animator animator;
-    private int food;
+    private float food;
 
     // Use this for initialization
     private void Start()
@@ -39,6 +39,14 @@ public class Player : MonoBehaviour
         
         int horizontal = 0;
         int vertical = 0;
+
+
+        food -= Time.deltaTime;
+        foodText.text = "Time: " + (food).ToString("0");
+        if (food < 0f)
+        {
+            CheckIfGameOver();
+        }
 
         animator.SetBool("IsWalk", IsWalk);
 
@@ -72,13 +80,13 @@ public class Player : MonoBehaviour
         else if (other.tag == "Food")
         {
             food += pointsPerFood;
-            foodText.text = "Time: " + food + "+" + pointsPerFood;
+            foodText.text = "Time: " + food + ("+" + pointsPerFood);
             other.gameObject.SetActive(false);
         }
         else if (other.tag == "Soda")
         {
             food += pointsPerSoda;
-            foodText.text = "Time: " + food + "+" + pointsPerFood;
+            foodText.text = "Time: " + food + ("+" + pointsPerFood);
             other.gameObject.SetActive(false);
         }
     }
@@ -90,7 +98,7 @@ public class Player : MonoBehaviour
     public void LoseFood(int loss) {
         animator.SetTrigger("playerHit");
         food -= loss;
-        foodText.text= "Time: " + food + "-" + loss;
+        foodText.text= "Time: " + (food).ToString("0") + "-" + loss;
         CheckIfGameOver();
     }
 
