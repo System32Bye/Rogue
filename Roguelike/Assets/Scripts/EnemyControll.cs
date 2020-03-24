@@ -64,17 +64,16 @@ public class EnemyControll : MonoBehaviour {
         while (!isDead) {
             switch (curState) {
                 case CurrentState.Idle:
-                    //nvAgent.Stop();
-                    animator.SetBool("isTrace", false);
                     nvAgent.isStopped = true;
+                    animator.SetBool("isTrace", false);
                     break;
                 case CurrentState.Trace:
                     nvAgent.destination = playerTransform.position;
-                    //nvAgent.Resume();
-                    animator.SetBool("isTrace", true);
                     nvAgent.isStopped = false;
+                    animator.SetBool("isTrace", true);
                     break;
                 case CurrentState.Attack:
+                    nvAgent.isStopped = true;
                     animator.SetTrigger("monAttack");
                     break;
            }
