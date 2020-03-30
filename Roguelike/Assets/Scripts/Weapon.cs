@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour
+{
     
     public string weaponName;   //무기 이름
     public float range;         //공격 범위

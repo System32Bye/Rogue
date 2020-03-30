@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyControll : MonoBehaviour {
+public class EnemyControll : CheckingDead
+{
 
     public enum CurrentState {
         Idle, Trace, Attack, Dead
     };
     public CurrentState curState = CurrentState.Idle;
-    public int playerDamage;
+    //public int playerDamage;
 
     private Transform _transform;
     private Transform playerTransform;
@@ -27,7 +28,9 @@ public class EnemyControll : MonoBehaviour {
     
 
     // Use this for initialization
-    void Start () {
+   protected override void Start () {
+        base.Start();
+
         GameManager.instance.AddEnemyToLise(this);
         _transform = this.gameObject.GetComponent<Transform>();
         playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -37,10 +40,20 @@ public class EnemyControll : MonoBehaviour {
 
         StartCoroutine(this.CheckState());
         StartCoroutine(this.CheckStateForAction());
-	}
 
-    IEnumerator CheckState() {
+    }
+
+    IEnumerator CheckState()
+    {
+        if (dead)
+        {
+            isDead = true;
+            curState = CurrentState.Dead;
+            yield break;
+        }
+
         while (!isDead) {
+            
             yield return new WaitForSeconds(0.1f);
 
             float dist = Vector3.Distance(playerTransform.position, _transform.position);
@@ -58,10 +71,23 @@ public class EnemyControll : MonoBehaviour {
                 curState = CurrentState.Idle;
             }
         }
+
     }
 
     IEnumerator CheckStateForAction() {
-        
+
+        if (isDead)
+        {
+            switch (curState)
+            {
+                case CurrentState.Dead:
+                    animator.SetBool("isDead", true);
+                    nvAgent.isStopped = true;
+                    break;
+            }
+            yield break;
+        }
+
         while (!isDead) {
             switch (curState) {
                 case CurrentState.Idle:
@@ -74,12 +100,10 @@ public class EnemyControll : MonoBehaviour {
                     animator.SetBool("isTrace", true);
                     break;
                 case CurrentState.Attack:
-                    nvAgent.isStopped = true;
                     animator.SetTrigger("monAttack");
                     yield return new WaitForSeconds(2f);
                     break;
-           }
-            
+            }
             yield return null;
         }
     }
