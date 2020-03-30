@@ -10,9 +10,9 @@ public class Player : MonoBehaviour
     public float moveTime = 0.08f;
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;
-    public float restartLevelDelay = 1f;
+    public float restartLevelDelay = 0.5f;
     public Text foodText;
-
+    
     Vector3 lookDirection;
     bool IsWalk = false;
 

@@ -400,7 +400,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Strat
+  m_Text: Start
 --- !u!222 &805935874
 CanvasRenderer:
   m_ObjectHideFlags: 0

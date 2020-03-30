@@ -24,9 +24,10 @@ public class EnemyControll : MonoBehaviour {
 
     //사망 확인
     private bool isDead = false;
+    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         GameManager.instance.AddEnemyToLise(this);
         _transform = this.gameObject.GetComponent<Transform>();
         playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -48,7 +49,7 @@ public class EnemyControll : MonoBehaviour {
             {
                 curState = CurrentState.Attack;
             }
-            else if (dist > attackDist && dist < traceDist)
+            else if (dist > attackDist&& dist < traceDist)
             {
                 curState = CurrentState.Trace;
             }
@@ -75,6 +76,7 @@ public class EnemyControll : MonoBehaviour {
                 case CurrentState.Attack:
                     nvAgent.isStopped = true;
                     animator.SetTrigger("monAttack");
+                    yield return new WaitForSeconds(2f);
                     break;
            }
             

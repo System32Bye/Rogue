@@ -54,13 +54,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoardManager.cs" />
-     <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Effect\GlitchEffect.cs" />
+     <Compile Include="Assets\Scripts\EnemyControll.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\MainCamera_Moving.cs" />
      <Compile Include="Assets\Scripts\MovingObject.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\Wall.cs" />
+     <Compile Include="Assets\Scripts\UI\Title.cs" />
+     <Compile Include="Assets\Scripts\Weapon.cs" />
+     <Compile Include="Assets\Scripts\WeaponController.cs" />
+     <None Include="Assets\Scripts\Effect\GlitchShader.shader" />
+     <None Include="Assets\Fonts\OFL.txt" />
      <None Include="Assets\PolygonSciFiCity\_Shaders\Polygon_UVScroll.shader" />
      <None Include="Assets\PolygonSciFiCity\_Shaders\Polygon_Triplanar.shader" />
  <Reference Include="UnityEditor.StandardEvents">

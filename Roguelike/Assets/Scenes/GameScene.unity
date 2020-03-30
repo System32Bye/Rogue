@@ -838,6 +838,40 @@ Prefab:
       propertyPath: foodText
       value: 
       objectReference: {fileID: 83500157}
+    - target: {fileID: 114403078548405240, guid: 88b8549c512e61a4faef09d6811bd719,
+        type: 2}
+      propertyPath: weaponName
+      value: "\uB9E8\uC190"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403078548405240, guid: 88b8549c512e61a4faef09d6811bd719,
+        type: 2}
+      propertyPath: range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403078548405240, guid: 88b8549c512e61a4faef09d6811bd719,
+        type: 2}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403078548405240, guid: 88b8549c512e61a4faef09d6811bd719,
+        type: 2}
+      propertyPath: attackDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403078548405240, guid: 88b8549c512e61a4faef09d6811bd719,
+        type: 2}
+      propertyPath: attackDelayA
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403078548405240, guid: 88b8549c512e61a4faef09d6811bd719,
+        type: 2}
+      propertyPath: attackDelayB
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040873062944052, guid: 88b8549c512e61a4faef09d6811bd719, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b8549c512e61a4faef09d6811bd719, type: 2}
   m_IsPrefabAsset: 0
