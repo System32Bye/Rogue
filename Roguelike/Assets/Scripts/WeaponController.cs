@@ -13,15 +13,30 @@ public class WeaponController : MonoBehaviour {
     private bool isSwing = false;
 
     private RaycastHit hitInfo;
-    
-	
-	// Update is called once per frame
-	void Update () {
+
+    bool IsWalk = false;
+
+
+    // Update is called once per frame
+    void Update()
+    {
         TryAttack();
-	}
+
+        currentWeapon.anim.SetBool("IsWalk", IsWalk);
+
+        if (Input.GetKey(KeyCode.LeftArrow) ||
+            Input.GetKey(KeyCode.RightArrow) ||
+            Input.GetKey(KeyCode.UpArrow) ||
+            Input.GetKey(KeyCode.DownArrow))
+        {
+            IsWalk = true;
+        }
+        else
+            IsWalk = false;
+    }
 
     private void TryAttack() {
-        if (Input.GetButton("Space")) {
+        if (Input.GetKey(KeyCode.Space)) {
             if (!isAttack) {
                 //코루틴 실행
                 StartCoroutine(AttackCoroutine());
@@ -31,7 +46,7 @@ public class WeaponController : MonoBehaviour {
 
     IEnumerator AttackCoroutine() {
         isAttack = true;
-        currentWeapon.anim.SetTrigger("Attack");
+        currentWeapon.anim.SetTrigger("playerAttack");
 
         yield return new WaitForSeconds(currentWeapon.attackDelayA);
         isSwing = true;
