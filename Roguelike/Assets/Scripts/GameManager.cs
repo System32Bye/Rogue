@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     private GameObject levelImage;
     private int level = 0;
     private List<EnemyControll> enemies = new List<EnemyControll>();
+    float damage = 1;
 
     // Use this for initialization
     void Awake()
@@ -70,5 +71,14 @@ public class GameManager : MonoBehaviour {
     public void AddEnemyToLise(EnemyControll script)
     {
         enemies.Add(script);
+    }
+
+    void onHitObject(RaycastHit hit) {
+        Damageable damageableObject = hit.collider.GetComponent<Damageable>();
+        if (damageableObject != null)
+        {
+            damageableObject.TakeHit(damage, hit);
+        }
+        GameObject.Destroy(gameObject);
     }
 }

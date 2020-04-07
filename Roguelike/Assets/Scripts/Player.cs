@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
             Input.GetKey(KeyCode.UpArrow) ||
             Input.GetKey(KeyCode.DownArrow))
         {
+            
             horizontal = (int)Input.GetAxisRaw("Horizontal");
             vertical = (int)Input.GetAxisRaw("Vertical");
             lookDirection = vertical * Vector3.forward + horizontal * Vector3.right;

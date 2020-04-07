@@ -462,11 +462,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4833300251778608}
+  - component: {fileID: 114789769855337560}
   - component: {fileID: 95035401024263696}
   - component: {fileID: 195512809857358868}
   - component: {fileID: 54613021999335624}
   - component: {fileID: 136022244993569032}
-  - component: {fileID: 114789769855337560}
   m_Layer: 0
   m_Name: Monster2
   m_TagString: Untagged
@@ -2109,8 +2109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7f9c4061913b14fa7a7d31f0768898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 2
   curState: 0
-  playerDamage: 0
+  attackDelay: 2.3
   traceDist: 3.2
   attackDist: 0.7
 --- !u!136 &136022244993569032
@@ -2122,10 +2123,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.18326874
-  m_Height: 1.7968713
+  m_Radius: 0.341314
+  m_Height: 2.1347225
   m_Direction: 1
-  m_Center: {x: 0.0013587996, y: 0.9072148, z: -0.022006221}
+  m_Center: {x: -0.00291273, y: 0.73828936, z: -0.022006221}
 --- !u!137 &137026964327872466
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -4055,7 +4056,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.35
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

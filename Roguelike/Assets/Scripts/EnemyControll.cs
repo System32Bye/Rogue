@@ -16,19 +16,15 @@ public class EnemyControll : CheckingDead
     private Transform playerTransform;
     private NavMeshAgent nvAgent;
     private Animator animator;
-    
-    //추적 거리
-    public float traceDist = 3.2f;
 
-    //공격 거리
-    public float attackDist = 0.7f;
+    public float attackDelay;               //공격 딜레이
+    public float traceDist = 3.2f;          //추적 거리
+    public float attackDist = 0.7f;         //공격 거리
+    private bool isDead = false;            //사망 확인
 
-    //사망 확인
-    private bool isDead = false;
-    
 
     // Use this for initialization
-   protected override void Start () {
+    protected override void Start () {
         base.Start();
 
         GameManager.instance.AddEnemyToLise(this);
@@ -81,8 +77,8 @@ public class EnemyControll : CheckingDead
             switch (curState)
             {
                 case CurrentState.Dead:
-                    animator.SetBool("isDead", true);
                     nvAgent.isStopped = true;
+                    animator.SetBool("isDead", true);
                     break;
             }
             yield break;
@@ -101,11 +97,15 @@ public class EnemyControll : CheckingDead
                     break;
                 case CurrentState.Attack:
                     animator.SetTrigger("monAttack");
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(attackDelay);
                     break;
             }
             yield return null;
         }
+    }
+
+    public void ChangeToMonDead() {
+
     }
 
 }
