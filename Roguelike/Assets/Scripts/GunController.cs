@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunController : MonoBehaviour {
+    //활성화
+    public static bool isActivate = true;
 
     //현재 총
     [SerializeField]
@@ -24,13 +26,22 @@ public class GunController : MonoBehaviour {
 
     void Start() {
         audioSC = GetComponent<AudioSource>();
+
+        Player.currentHand = currentGun.GetComponent<Transform>();
+        Player.currentHandAnim = currentGun.anim;
     }
 
     // Update is called once per frame
     void Update () {
-        GunFireRateCalc();
-        TryFire();
+        if (isActivate)
+        {
+            GunFireRateCalc();
+            TryFire();
+            TryWalk();
+        }
+    }
 
+    private void TryWalk() {
         currentGun.anim.SetBool("Walk", IsWalk);
 
         if (Input.GetKey(KeyCode.LeftArrow) ||
@@ -52,7 +63,7 @@ public class GunController : MonoBehaviour {
 
     //발사 시도
     private void TryFire() {
-        if (Input.GetKey(KeyCode.Space) && currentFireRate <= 0 && !isReload)
+        if (Input.GetKey(KeyCode.C) && currentFireRate <= 0 && !isReload)
         {
             Fire();
         }
@@ -84,7 +95,13 @@ public class GunController : MonoBehaviour {
             Destroy(clone, 2f);
         }
     }
-    
+
+    public void CancelReload() {
+        if (isReload) {
+            StopAllCoroutines();
+            isReload = false;
+        }
+    }
 
     //재장전
     IEnumerator ReloadCoroutine()
@@ -109,4 +126,20 @@ public class GunController : MonoBehaviour {
         audioSC.Play();
     }
 
+    public Gun GetGun() {
+        return currentGun;
+    }
+
+    public void GunChange(Gun _gun) {
+        if (Player.currentHand != null)
+            Player.currentHand.gameObject.SetActive(false);
+
+        currentGun = _gun;
+        Player.currentHand = currentGun.GetComponent<Transform>();
+        Player.currentHandAnim = currentGun.anim;
+
+        currentGun.transform.localPosition = Vector3.zero;
+        currentGun.gameObject.SetActive(true);
+        isActivate = true;
+    }
 }

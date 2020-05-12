@@ -14,18 +14,62 @@ public class Player : MonoBehaviour
     public Text foodText;
 
     Vector3 lookDirection;
-
-    private Animator animator;
+    
     private float food;
+    //----------------------------------------------------------
+    //무기 중복 교체 실행 방지
+    public static bool isChangeHand = false;
 
+    //현재 무기와 무기 애니메이션
+    public static Transform currentHand;
+    public static Animator currentHandAnim;
+
+    //무기 교체 딜레이
+    [SerializeField]
+    private float changeHandDelayTime;
+    //무기 교체 끝난 시점
+    [SerializeField]
+    private float changeHandEndDelayTime;
+
+    //무기 종류(원/근) 관리
+    [SerializeField]
+    private Gun[] guns;
+    [SerializeField]
+    private Weapon[] weapons;
+
+    //관리 쉽게 무기 접근 가능
+    private Dictionary<string, Gun> gunDictionary = new Dictionary<string, Gun>();
+    private Dictionary<string, Weapon> weaponDictionary = new Dictionary<string, Weapon>();
+    
+    //현재 무기 타입
+    [SerializeField]
+    private string currentHandType;
+
+    //필요한 컴포넌트
+    [SerializeField]
+    private GunController theGunController;
+    [SerializeField]
+    private WeaponController theWeaponController;
+    //----------------------------------------------------------
     // Use this for initialization
     public void Start()
     {
-        WeaponManager.isChangeWeapon = true;
+        //Player.isChangeHand = true;
 
         food = GameManager.instance.playerFoodPoints;
 
         foodText.text = "Time: " + food;
+
+        //------------------------------------------------------
+        for (int i = 0; i < guns.Length; i++)
+        {
+            gunDictionary.Add(guns[i].gunName, guns[i]);
+        }
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weaponDictionary.Add(weapons[i].weaponName, weapons[i]);
+        }
+        //------------------------------------------------------
     }
 
     private void OnDisable()
@@ -61,6 +105,22 @@ public class Player : MonoBehaviour
             this.transform.rotation = Quaternion.LookRotation(lookDirection);
             this.transform.Translate(Vector3.forward * moveTime);
         }
+
+        //-------------------------------------------------
+        if (!isChangeHand)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StartCoroutine(ChangeHandCoroutine("WEAPON", "Weapon"));
+                Debug.Log("weapon");
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                StartCoroutine(ChangeHandCoroutine("GUN", "Gun"));
+                Debug.Log("gun");
+            }
+        }
+        //-------------------------------------------------
     }
     
 
@@ -101,5 +161,44 @@ public class Player : MonoBehaviour
     {
         if (food <= 0)
             GameManager.instance.GameOver();
+    }
+
+    //---------------------------------------------------
+    public IEnumerator ChangeHandCoroutine(string _type, string _name)
+    {
+        isChangeHand = true;
+        currentHandAnim.SetTrigger("WeaponOut");
+
+        yield return new WaitForSeconds(changeHandDelayTime);
+
+        CancelPreHandAction();
+        HandChange(_type, _name);
+
+        yield return new WaitForSeconds(changeHandEndDelayTime);
+
+        currentHandType = _type;
+        isChangeHand = false;
+    }
+
+    private void CancelPreHandAction()
+    {
+        switch (currentHandType)
+        {
+            case "GUN":
+                theGunController.CancelReload();
+                GunController.isActivate = false;
+                break;
+            case "WEAPON":
+                WeaponController.isActivate = false;
+                break;
+        }
+    }
+
+    private void HandChange(string _type, string _name)
+    {
+        if (_type == "GUN")
+            theGunController.GunChange(gunDictionary[_name]);
+        else if (_type == "WEAPON")
+            theWeaponController.WeaponChange(weaponDictionary[_name]);
     }
 }

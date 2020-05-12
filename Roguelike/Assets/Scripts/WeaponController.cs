@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour {
+    //활성화
+    public static bool isActivate = false;
 
     //현재 장착한 무기
     [SerializeField]
@@ -20,8 +22,14 @@ public class WeaponController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        TryAttack();
+        if (isActivate)
+        {
+            TryAttack();
+            TryWalk();
+        }
+    }
 
+    private void TryWalk() {
         currentWeapon.anim.SetBool("IsWalk", IsWalk);
 
         if (Input.GetKey(KeyCode.LeftArrow) ||
@@ -36,7 +44,7 @@ public class WeaponController : MonoBehaviour {
     }
 
     private void TryAttack() {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.C)) {
             if (!isAttack) {
                 //코루틴 실행
                 StartCoroutine(AttackCoroutine());
@@ -78,5 +86,20 @@ public class WeaponController : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+
+    public void WeaponChange(Weapon _weapon)
+    {
+        if (Player.currentHand != null)
+            Player.currentHand.gameObject.SetActive(false);
+
+        currentWeapon = _weapon;
+        Player.currentHand = currentWeapon.GetComponent<Transform>();
+        Player.currentHandAnim = currentWeapon.anim;
+
+        currentWeapon.transform.localPosition = Vector3.zero;
+        currentWeapon.gameObject.SetActive(true);
+        isActivate = true;
     }
 }
