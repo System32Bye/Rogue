@@ -35,12 +35,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Gun[] guns;
     [SerializeField]
-    private Weapon[] weapons;
+    private CloseWeapon[] weapons;
+    [SerializeField]
+    private CloseWeapon[] axes;
 
     //관리 쉽게 무기 접근 가능
     private Dictionary<string, Gun> gunDictionary = new Dictionary<string, Gun>();
-    private Dictionary<string, Weapon> weaponDictionary = new Dictionary<string, Weapon>();
-    
+    private Dictionary<string, CloseWeapon> weaponDictionary = new Dictionary<string, CloseWeapon>();
+    private Dictionary<string, CloseWeapon> axeDictionary = new Dictionary<string, CloseWeapon>();
+
     //현재 무기 타입
     [SerializeField]
     private string currentHandType;
@@ -50,6 +53,8 @@ public class Player : MonoBehaviour
     private GunController theGunController;
     [SerializeField]
     private WeaponController theWeaponController;
+    [SerializeField]
+    private AxeController theAxeController;
     //----------------------------------------------------------
     // Use this for initialization
     public void Start()
@@ -67,7 +72,11 @@ public class Player : MonoBehaviour
         }
         for (int i = 0; i < weapons.Length; i++)
         {
-            weaponDictionary.Add(weapons[i].weaponName, weapons[i]);
+            weaponDictionary.Add(weapons[i].closeWeaponName, weapons[i]);
+        }
+        for (int i = 0; i < axes.Length; i++)
+        {
+            axeDictionary.Add(axes[i].closeWeaponName, axes[i]);
         }
         //------------------------------------------------------
     }
@@ -118,6 +127,11 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(ChangeHandCoroutine("GUN", "Gun"));
                 Debug.Log("gun");
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                StartCoroutine(ChangeHandCoroutine("AXE", "Axe"));
+                Debug.Log("axe");
             }
         }
         //-------------------------------------------------
@@ -180,6 +194,7 @@ public class Player : MonoBehaviour
         isChangeHand = false;
     }
 
+    //무기 취소
     private void CancelPreHandAction()
     {
         switch (currentHandType)
@@ -191,14 +206,20 @@ public class Player : MonoBehaviour
             case "WEAPON":
                 WeaponController.isActivate = false;
                 break;
+            case "AXE":
+                AxeController.isActivate = false;
+                break;
         }
     }
 
+    //교체
     private void HandChange(string _type, string _name)
     {
         if (_type == "GUN")
             theGunController.GunChange(gunDictionary[_name]);
         else if (_type == "WEAPON")
-            theWeaponController.WeaponChange(weaponDictionary[_name]);
+            theWeaponController.CloseWeaponChange(weaponDictionary[_name]);
+        else if (_type == "AXE")
+            theAxeController.CloseWeaponChange(axeDictionary[_name]);
     }
 }

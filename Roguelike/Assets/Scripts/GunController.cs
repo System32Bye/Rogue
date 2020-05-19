@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour {
     //활성화
-    public static bool isActivate = true;
+    public static bool isActivate = false;
 
     //현재 총
     [SerializeField]
     private Gun currentGun;
 
-    private float currentFireRate;      //연사속도
+    //연사속도
+    private float currentFireRate;
 
+    //효과음
     private AudioSource audioSC;
 
     bool IsWalk = false;
     private bool isReload = false;
 
-    private RaycastHit hitInfo;         //레이저 충돌 정보
+    //레이저 충돌 정보
+    private RaycastHit hitInfo;
 
     //피격
     [SerializeField]
@@ -27,8 +30,7 @@ public class GunController : MonoBehaviour {
     void Start() {
         audioSC = GetComponent<AudioSource>();
 
-        Player.currentHand = currentGun.GetComponent<Transform>();
-        Player.currentHandAnim = currentGun.anim;
+        
     }
 
     // Update is called once per frame

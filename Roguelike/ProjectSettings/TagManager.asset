@@ -7,6 +7,7 @@ TagManager:
   - Exit
   - Soda
   - Food
+  - Monster
   layers:
   - Default
   - TransparentFX
