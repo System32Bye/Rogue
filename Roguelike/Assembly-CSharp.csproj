@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\MainCamera_Moving.cs" />
     <Compile Include="Assets\Scripts\MovingObject.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Rock.cs" />
     <Compile Include="Assets\Scripts\UI\Title.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Scripts\WeaponManager.cs" />

@@ -22,6 +22,9 @@ public class WeaponController : CloseWeaponController
         {
             if (CheckObject())
             {
+                if (hitInfo.transform.tag == "Rock") {
+                    hitInfo.transform.GetComponent<Rock>().Mining();
+                }
                 isSwing = false;
                 Debug.Log(hitInfo.transform.name);
             }

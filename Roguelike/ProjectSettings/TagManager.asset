@@ -8,6 +8,7 @@ TagManager:
   - Soda
   - Food
   - Monster
+  - Rock
   layers:
   - Default
   - TransparentFX
