@@ -1749,7 +1749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7f9c4061913b14fa7a7d31f0768898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 5
+  destroyTime: 4
+  _enemy: {fileID: 1501907726465578}
   walkSpeed: 0.04
   walkTime: 3
   waitTime: 2

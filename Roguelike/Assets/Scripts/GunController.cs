@@ -93,6 +93,10 @@ public class GunController : MonoBehaviour {
 
     private void Hit() {
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, currentGun.range)){
+            if (hitInfo.transform.tag == "Monster")
+            {
+                hitInfo.transform.GetComponent<EnemyControll>().Damage();
+            }
             var clone = Instantiate(hitEffectPrefab, new Vector3(hitInfo.point.x, hitInfo.point.y+1f, hitInfo.point.z), hitInfo.transform.rotation);
             Destroy(clone, 2f);
         }

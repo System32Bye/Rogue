@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public float levelStartDelay = 2f;
+    public float levelStartDelay = 1.5f;
     public static GameManager instance = null;
     public BoardManager boardScript;
     public float playerFoodPoints = 100.0f;
@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour {
     private GameObject levelImage;
     private int level = 0;
     private List<EnemyControll> enemies = new List<EnemyControll>();
-    float damage = 1;
 
     // Use this for initialization
     void Awake()
@@ -73,12 +72,9 @@ public class GameManager : MonoBehaviour {
         enemies.Add(script);
     }
 
-    void onHitObject(RaycastHit hit) {
-        Damageable damageableObject = hit.collider.GetComponent<Damageable>();
-        if (damageableObject != null)
-        {
-            damageableObject.TakeHit(damage, hit);
-        }
-        GameObject.Destroy(gameObject);
+    public void ClickTitle()
+    {
+        Debug.Log("로딩");
+        SceneManager.LoadScene("TitleScene");
     }
 }

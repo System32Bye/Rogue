@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
-
-    public string sceneName = "GameScene";
-
     public void ClickStart()
     {
         Debug.Log("로딩");
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("GameScene");
     }
-    
+
+    public void ClickTutorial()
+    {
+        Debug.Log("로딩");
+        SceneManager.LoadScene("TutorialScene");
+    }
+
     public void ClickExit()
     {
         Debug.Log("종료");

@@ -9,6 +9,13 @@ public class EnemyControll : MonoBehaviour
     //-----------------------------------------------------
     [SerializeField]
     private int hp;
+
+    [SerializeField]
+    private float destroyTime;
+
+    [SerializeField]
+    private GameObject _enemy;
+
     [SerializeField]
     private float walkSpeed;
 
@@ -76,16 +83,6 @@ public class EnemyControll : MonoBehaviour
         Rotation();
         ElapseTime();
         Nav();
-        /*
-        GameManager.instance.AddEnemyToLise(this);
-        _transform = this.gameObject.GetComponent<Transform>();
-        playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        nvAgent = this.gameObject.GetComponent<NavMeshAgent>();
-
-
-        StartCoroutine(this.CheckState());
-        StartCoroutine(this.CheckStateForAction());
-        */
     }
 
     private void Nav() {
@@ -142,14 +139,6 @@ public class EnemyControll : MonoBehaviour
     //-----------------------------------------------------
     IEnumerator CheckState()
     {
-        /*
-        if (dead)
-        {
-            isDead = true;
-            curState = CurrentState.Dead;
-            yield break;
-        }
-        */
         while (!isDead) {
             
             yield return new WaitForSeconds(0.1f);
@@ -170,7 +159,6 @@ public class EnemyControll : MonoBehaviour
                 curState = CurrentState.Idle;
             }
         }
-
     }
 
     IEnumerator CheckStateForAction() {
@@ -207,14 +195,17 @@ public class EnemyControll : MonoBehaviour
         }
     }
 
-    public void Damage(int _dmg, Vector3 _targetPos) {
-        hp -= _dmg;
+    public void Damage(){
+        hp--;
 
-        if (hp <= 0) {
-            Debug.Log("체력 0 이하");
-            return;
+        if (hp <= 0){
+            isDead = true;
+            anim.SetTrigger("isDead");
+            Destruction();
         }
-        anim.SetTrigger("isDead");
     }
-
+    private void Destruction() {
+        capCol.enabled = false;
+        Destroy(_enemy, destroyTime);
+    }
 }
