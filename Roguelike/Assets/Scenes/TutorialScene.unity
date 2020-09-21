@@ -5742,9 +5742,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9297cf039f21ffb4ca84ebcb8e7c8744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStartDelay: 2
+  levelStartDelay: 1.5
   boardScript: {fileID: 0}
-  playerFoodPoints: 100
+  playerFoodPoints: 50
 --- !u!114 &581514135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11098,9 +11098,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveTime: 0.08
-  pointsPerFood: 10
-  pointsPerSoda: 15
-  restartLevelDelay: 1
+  pointsPerFood: 5
+  pointsPerSoda: 7
+  restartLevelDelay: 1.5
   foodText: {fileID: 1966845267}
   changeHandDelayTime: 0
   changeHandEndDelayTime: 0

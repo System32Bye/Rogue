@@ -5492,7 +5492,7 @@ RectTransform:
   m_Children:
   - {fileID: 1452915191}
   m_Father: {fileID: 998123145}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5812,6 +5812,7 @@ RectTransform:
   m_Children:
   - {fileID: 1846334166}
   - {fileID: 83500156}
+  - {fileID: 1335965226}
   - {fileID: 617327339}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -5971,6 +5972,78 @@ Transform:
   m_Father: {fileID: 1871462078}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 138.41699, y: 31.12799, z: -78.622986}
+--- !u!1 &1335965225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1335965226}
+  - component: {fileID: 1335965228}
+  - component: {fileID: 1335965227}
+  m_Layer: 5
+  m_Name: DamagedImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1335965226
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335965225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 998123145}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1335965227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335965225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6226415, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1335965228
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335965225}
+  m_CullTransparentMesh: 0
 --- !u!1 &1368174885
 GameObject:
   m_ObjectHideFlags: 0
@@ -6295,7 +6368,7 @@ GameObject:
   - component: {fileID: 1599457907}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6315,23 +6388,24 @@ MonoBehaviour:
   moveTime: 0.08
   pointsPerFood: 10
   pointsPerSoda: 15
-  restartLevelDelay: 1
+  restartLevelDelay: 0.5
   foodText: {fileID: 83500157}
-  changeHandDelayTime: 0
-  changeHandEndDelayTime: 0
+  damageImage: {fileID: 1335965227}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  changeHandDelayTime: 0.5
+  changeHandEndDelayTime: 0.5
   guns:
   - {fileID: 307728242}
   weapons:
   - {fileID: 996074946}
   axes:
   - {fileID: 1537416004}
-  - {fileID: 1537416004}
-  - {fileID: 1537416004}
-  - {fileID: 1537416004}
   currentHandType: AXE
   theGunController: {fileID: 1599457906}
   theWeaponController: {fileID: 1599457904}
   theAxeController: {fileID: 1599457905}
+  PlayercapCol: {fileID: 1599457902}
 --- !u!54 &1599457901
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11477,7 +11551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9297cf039f21ffb4ca84ebcb8e7c8744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStartDelay: 2
+  levelStartDelay: 1.5
   boardScript: {fileID: 0}
   playerFoodPoints: 100
 --- !u!114 &1919923123

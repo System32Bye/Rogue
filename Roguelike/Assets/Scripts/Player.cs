@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,8 +14,14 @@ public class Player : MonoBehaviour
     public float restartLevelDelay = 0.5f;
     public Text foodText;
 
+    public Image damageImage;
+    public float flashSpeed = 5f;
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+
+    private bool damaged;
+
     Vector3 lookDirection;
-    
+
     private float food;
     //----------------------------------------------------------
     //무기 중복 교체 실행 방지
@@ -55,6 +62,9 @@ public class Player : MonoBehaviour
     private WeaponController theWeaponController;
     [SerializeField]
     private AxeController theAxeController;
+
+    [SerializeField]
+    private CapsuleCollider PlayercapCol;
     //----------------------------------------------------------
     // Use this for initialization
     public void Start()
@@ -89,10 +99,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         int horizontal = 0;
         int vertical = 0;
-
 
         food -= Time.deltaTime;
         foodText.text = "Time: " + (food).ToString("0");
@@ -100,13 +108,13 @@ public class Player : MonoBehaviour
         {
             CheckIfGameOver();
         }
-        
+
         if (Input.GetKey(KeyCode.LeftArrow) ||
             Input.GetKey(KeyCode.RightArrow) ||
             Input.GetKey(KeyCode.UpArrow) ||
             Input.GetKey(KeyCode.DownArrow))
         {
-            
+
             horizontal = (int)Input.GetAxisRaw("Horizontal");
             vertical = (int)Input.GetAxisRaw("Vertical");
             lookDirection = vertical * Vector3.forward + horizontal * Vector3.right;
@@ -135,8 +143,17 @@ public class Player : MonoBehaviour
             }
         }
         //-------------------------------------------------
+
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else {
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        damaged = false;
     }
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -148,13 +165,13 @@ public class Player : MonoBehaviour
         else if (other.tag == "Food")
         {
             food += pointsPerFood;
-            foodText.text = "Time: " + food + ("+" + pointsPerFood);
+            foodText.text = "Time: " + food;
             other.gameObject.SetActive(false);
         }
         else if (other.tag == "Soda")
         {
             food += pointsPerSoda;
-            foodText.text = "Time: " + food + ("+" + pointsPerFood);
+            foodText.text = "Time: " + food;
             other.gameObject.SetActive(false);
         }
     }
@@ -163,17 +180,17 @@ public class Player : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    /*
     public void LoseFood(int loss)
     {
         food -= loss;
         foodText.text = "Time: " + (food).ToString("0") + "-" + loss;
         CheckIfGameOver();
-    }
+    }*/
 
     private void CheckIfGameOver()
     {
-        if (food <= 0)
+        if (food <= 0f)
             GameManager.instance.GameOver();
     }
 
@@ -221,5 +238,14 @@ public class Player : MonoBehaviour
             theWeaponController.CloseWeaponChange(weaponDictionary[_name]);
         else if (_type == "AXE")
             theAxeController.CloseWeaponChange(axeDictionary[_name]);
+    }
+
+    public void PlayerHit(float _dmg)
+    {
+        damaged = true;
+
+        food -= _dmg;
+        if (food <= 0)
+            CheckIfGameOver();
     }
 }

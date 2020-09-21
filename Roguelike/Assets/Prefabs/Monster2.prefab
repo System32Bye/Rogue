@@ -1752,16 +1752,18 @@ MonoBehaviour:
   hp: 5
   destroyTime: 4
   _enemy: {fileID: 1501907726465578}
-  walkSpeed: 0.04
+  walkSpeed: 0.03
   walkTime: 3
-  waitTime: 2
+  waitTime: 2.5
+  range: 0.8
   anim: {fileID: 95035401024263696}
   rigid: {fileID: 54613021999335624}
   capCol: {fileID: 136022244993569032}
   curState: 0
   attackDelay: 2.3
   traceDist: 3.2
-  attackDist: 0.7
+  attackDist: 0.3
+  attackDamage: 5
 --- !u!95 &95035401024263696
 Animator:
   serializedVersion: 3
