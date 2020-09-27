@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     private Text levelText;
     private GameObject levelImage;
-    private int level = 0;
+    public static int level = 0;
     private List<EnemyControll> enemies = new List<EnemyControll>();
 
     public static bool isPause = false;         //메뉴가 호출되면 true

@@ -19,17 +19,11 @@ public class EnemyControll : MonoBehaviour
     [SerializeField]
     private float walkSpeed;
 
-    //private Vector3 direction;
-
-    //private bool isAction;
-    //private bool isWalking;
-
     [SerializeField]
     private float walkTime;
     [SerializeField]
     private float waitTime;
 
-    //private float currentTime;
     protected RaycastHit hitCheck;
     public float range = 0.8f;
 
@@ -69,10 +63,6 @@ public class EnemyControll : MonoBehaviour
 
     // Use this for initialization
     private void Start () {
-        //currentPlayer = GetComponent<Player>();
-        //nvAgent = GetComponent<NavMeshAgent>();
-        //currentTime = waitTime;
-        //isAction = true;
     }
 
     
@@ -95,8 +85,6 @@ public class EnemyControll : MonoBehaviour
             MonAttack();
 
         if (!isDead) {
-            //Move();
-            //ElapseTime();
             Nav();
         }
     }
@@ -124,53 +112,7 @@ public class EnemyControll : MonoBehaviour
             }
         }
     }
-/*
-   private void Move() {
-        if (isWalking)
-            //rigid.MovePosition(transform.position + (transform.forward * walkSpeed * Time.deltaTime));
-            nvAgent.SetDestination(transform.position + destination * 5f);
-    }
 
-    private void ElapseTime() {
-        if (isAction) {
-            currentTime -= Time.deltaTime;
-            if (currentTime <= 0)
-                Reset();
-        }
-    }
-
-    protected virtual void Reset() {
-        isWalking = false;
-        isAction = true;
-        nvAgent.ResetPath();
-        anim.SetBool("isTrace", isWalking);
-        destination.Set(Random.Range(-0.2f, 0.2f), 0f, Random.Range(0.5f, 1f));
-    }
-
-    private void RandomAction() {
-
-        int _random = Random.Range(0, 2);
-
-        if (_random == 0) {
-            Wait();
-        }
-        else if (_random == 1) {
-            TryWalk();
-        }
-    }
-
-    private void Wait() {
-        currentTime = waitTime;
-        Debug.Log("대기");
-    }
-
-    private void TryWalk() {
-        isWalking = true;
-        anim.SetBool("isTrace", isWalking);
-        currentTime = walkTime;
-        Debug.Log("걷기");
-    }*/
-    
     private bool CheckObject()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitCheck, range))

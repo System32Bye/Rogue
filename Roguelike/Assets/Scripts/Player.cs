@@ -108,19 +108,22 @@ public class Player : MonoBehaviour
         {
             CheckIfGameOver();
         }
-
-        if (Input.GetKey(KeyCode.LeftArrow) ||
-            Input.GetKey(KeyCode.RightArrow) ||
-            Input.GetKey(KeyCode.UpArrow) ||
-            Input.GetKey(KeyCode.DownArrow))
+        if (!GameManager.isPause)
         {
 
-            horizontal = (int)Input.GetAxisRaw("Horizontal");
-            vertical = (int)Input.GetAxisRaw("Vertical");
-            lookDirection = vertical * Vector3.forward + horizontal * Vector3.right;
+            if (Input.GetKey(KeyCode.LeftArrow) ||
+                Input.GetKey(KeyCode.RightArrow) ||
+                Input.GetKey(KeyCode.UpArrow) ||
+                Input.GetKey(KeyCode.DownArrow))
+            {
 
-            this.transform.rotation = Quaternion.LookRotation(lookDirection);
-            this.transform.Translate(Vector3.forward * moveTime);
+                horizontal = (int)Input.GetAxisRaw("Horizontal");
+                vertical = (int)Input.GetAxisRaw("Vertical");
+                lookDirection = vertical * Vector3.forward + horizontal * Vector3.right;
+
+                this.transform.rotation = Quaternion.LookRotation(lookDirection);
+                this.transform.Translate(Vector3.forward * moveTime);
+            }
         }
 
         //-------------------------------------------------

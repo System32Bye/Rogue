@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
 
-    [SerializeField] private GameObject go_BaseUi;
-
-
-
+    [SerializeField]
+    private GameObject go_BaseUi;
 
     // Update is called once per frame
     void Update()
@@ -24,7 +23,6 @@ public class PauseMenu : MonoBehaviour
                 CloseMenu();
             }
         }
-
     }
 
     private void CallMenu()
@@ -46,10 +44,24 @@ public class PauseMenu : MonoBehaviour
     public void ClickReset()
     {
         Debug.Log("리셋");
+        SceneManager.LoadScene("GameScene");
+        GameManager.isPause = false;
+        GameManager.level = 0;
+        Time.timeScale = 1f;
+    }
+
+    public void ClickTitle()
+    {
+        Debug.Log("타이틀");
+        SceneManager.LoadScene("TitleScene");
+        GameManager.isPause = false;
+        GameManager.level = 0;
+        Time.timeScale = 1f;
     }
 
     public void ClickExit()
     {
         Debug.Log("종료");
+        Application.Quit();
     }
 }
