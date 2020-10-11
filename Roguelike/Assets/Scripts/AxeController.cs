@@ -8,6 +8,7 @@ public class AxeController : CloseWeaponController
     //활성화
     public static bool isActivate = true;
 
+
     private void Start()
     {
         Player.currentHand = currentCloseWeapon.GetComponent<Transform>();
@@ -42,4 +43,5 @@ public class AxeController : CloseWeaponController
         base.CloseWeaponChange(_closeWeapon);
         isActivate = true;
     }
+
 }

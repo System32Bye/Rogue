@@ -5185,6 +5185,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 109712206}
     m_Modifications:
+    - target: {fileID: 996074946, guid: 88b8549c512e61a4faef09d6811bd719, type: 3}
+      propertyPath: attack_Sound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1040873062944052, guid: 88b8549c512e61a4faef09d6811bd719, type: 3}
       propertyPath: m_Name
       value: Axe
@@ -6935,6 +6939,12 @@ MonoBehaviour:
   theGunController: {fileID: 1599457906}
   theWeaponController: {fileID: 1599457904}
   theAxeController: {fileID: 1599457905}
+  soda_Text: {fileID: 7790894719936317943, guid: 219eca01ad78b694e985fcf778770e58,
+    type: 3}
+  food_Text: {fileID: 2019640432683334182, guid: e6d85ab1fafd9aa49bb7c52a84357946,
+    type: 3}
+  audioSource: {fileID: 1599457907}
+  eat_Item: {fileID: 8300000, guid: cea3274780ce23e4c9cf902fef1d284e, type: 3}
   PlayercapCol: {fileID: 1599457902}
 --- !u!54 &1599457901
 Rigidbody:
@@ -12040,6 +12050,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1983657217}
     m_Modifications:
+    - target: {fileID: 996074946, guid: 88b8549c512e61a4faef09d6811bd719, type: 3}
+      propertyPath: attack_Sound
+      value: 
+      objectReference: {fileID: 8300000, guid: ab67f2fd80c8f7640ba5952e122c9c60, type: 3}
+    - target: {fileID: 996074946, guid: 88b8549c512e61a4faef09d6811bd719, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1599457907}
     - target: {fileID: 1040873062944052, guid: 88b8549c512e61a4faef09d6811bd719, type: 3}
       propertyPath: m_Name
       value: Weapon

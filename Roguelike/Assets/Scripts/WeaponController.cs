@@ -7,6 +7,7 @@ public class WeaponController : CloseWeaponController
     //활성화
     public static bool isActivate = false;
 
+
     void Update()
     {
         if (isActivate)

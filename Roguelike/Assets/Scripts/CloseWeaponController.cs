@@ -10,6 +10,7 @@ public abstract class CloseWeaponController : MonoBehaviour
     [SerializeField]
     protected CloseWeapon currentCloseWeapon;
 
+
     //공격중
     protected bool isAttack = false;
     protected bool isSwing = false;
@@ -43,6 +44,7 @@ public abstract class CloseWeaponController : MonoBehaviour
         {
             if (!isAttack)
             {
+                
                 //코루틴 실행
                 StartCoroutine(AttackCoroutine());
             }
@@ -59,12 +61,13 @@ public abstract class CloseWeaponController : MonoBehaviour
 
         //공격 활성화 시점
         StartCoroutine(HitCoroutine());
-
+        
         yield return new WaitForSeconds(currentCloseWeapon.attackDelayB);
         isSwing = false;
 
         yield return new WaitForSeconds(currentCloseWeapon.attackDelay - currentCloseWeapon.attackDelayA - currentCloseWeapon.attackDelayB);
         isAttack = false;
+
     }
 
     //자식이 완성시킴

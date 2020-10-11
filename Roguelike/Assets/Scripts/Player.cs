@@ -64,6 +64,15 @@ public class Player : MonoBehaviour
     private AxeController theAxeController;
 
     [SerializeField]
+    private GameObject soda_Text;
+    [SerializeField]
+    private GameObject food_Text;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip eat_Item;
+
+    [SerializeField]
     private CapsuleCollider PlayercapCol;
     //----------------------------------------------------------
     // Use this for initialization
@@ -169,13 +178,21 @@ public class Player : MonoBehaviour
         {
             food += pointsPerFood;
             foodText.text = "Time: " + food;
+            audioSource.clip = eat_Item;
+            audioSource.Play();
             other.gameObject.SetActive(false);
+            var clone = Instantiate(food_Text, PlayercapCol.bounds.center, Quaternion.identity);
+            Destroy(clone, 1);
         }
         else if (other.tag == "Soda")
         {
             food += pointsPerSoda;
             foodText.text = "Time: " + food;
+            audioSource.clip = eat_Item;
+            audioSource.Play();
             other.gameObject.SetActive(false);
+            var clone = Instantiate(soda_Text, PlayercapCol.bounds.center, Quaternion.identity);
+            Destroy(clone, 1);
         }
     }
 

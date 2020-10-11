@@ -37,7 +37,8 @@ public class WeaponManager : MonoBehaviour {
     private GunController theGunController;
     [SerializeField]
     private WeaponController theWeaponController;
-    
+
+
     // Use this for initialization
     void Start () {
         for (int i = 0; i < guns.Length; i++)

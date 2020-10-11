@@ -29,8 +29,6 @@ public class GunController : MonoBehaviour {
 
     void Start() {
         audioSC = GetComponent<AudioSource>();
-
-        
     }
 
     // Update is called once per frame
