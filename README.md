@@ -4,9 +4,9 @@
 ```
 ```
 2. Game Description
->Title: Time Rogue
->Overview: 
->Platform: PC
->Genre: Roguelike
->Target Player: Age of all
+> Title: Time Rogue
+> Overview: 
+> Platform: PC
+> Genre: Roguelike
+> Target Player: Age of all
 ```
