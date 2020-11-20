@@ -1,17 +1,20 @@
-## Time Rogue
+# Time Rogue
+--------------------
+### YouTube Link
 ```
-1. YouTube Link: 
+
 ```
+
+### Game Description
 ```
-2. Game Description
   타이틀: Time Rogue
   개요: 적들이 존재하는 건물에서 살아남으며 50층까지 올라가 탈출하는 사람을 인터넷 스트리밍하는 컨셉의 게임
   플랫폼: PC
   장르: Roguelike
   타켓 플레이어: 전연령
 ```
+### 게임의 특징
 ```
-3. 게임의 특징
   게임을 처음 시작하면 100초의 제한시간이 생기고 제한시간이 0이 되면 게임오버가 된다.
   
   BoardManager
