@@ -48,8 +48,8 @@
     - 몬스터의 체력이 0이하로 떨어지면 Dead
 
 
-### 게임 기획서 및 보고서
+### 게임 기획서
 -------------------
  * Google Drive Link
-  https://drive.google.com/drive/folders/17W4BKdqBwimlz1cV8YQuSwyj9f0F1Kio?usp=sharing
+  - https://drive.google.com/drive/folders/17W4BKdqBwimlz1cV8YQuSwyj9f0F1Kio?usp=sharing
   
