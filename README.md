@@ -51,5 +51,5 @@
 ### 게임 기획서
 -------------------
  * Google Drive Link
-  - https://drive.google.com/drive/folders/17W4BKdqBwimlz1cV8YQuSwyj9f0F1Kio?usp=sharing
+   - https://drive.google.com/drive/folders/17W4BKdqBwimlz1cV8YQuSwyj9f0F1Kio?usp=sharing
   
