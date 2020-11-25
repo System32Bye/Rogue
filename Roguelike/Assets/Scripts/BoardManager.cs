@@ -27,7 +27,11 @@ public class BoardManager : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
     public GameObject[] foodTiles;
-    public GameObject[] monsterTiles;
+    public GameObject[] monsterTiles1;
+    public GameObject[] monsterTiles2;
+    public GameObject[] monsterTiles3;
+    public GameObject[] monsterTiles4;
+    public GameObject[] monsterTiles5;
     public GameObject[] outerWallTiles;
 
     private Transform boardHolder;
@@ -91,8 +95,27 @@ public class BoardManager : MonoBehaviour
         BoardSetup();
         LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
         LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
-        int monsterCount = (int)Mathf.Log(level, 2f);
-        LayoutObjectAtRandom(monsterTiles, monsterCount, monsterCount);
+        int monsterCount = (int)Mathf.Log(level, 2);
+        if (level < 10)
+        {
+            LayoutObjectAtRandom(monsterTiles1, monsterCount, monsterCount);
+        }
+        else if (10 <= level && level < 20)
+        {
+            LayoutObjectAtRandom(monsterTiles2, monsterCount, monsterCount);
+        }
+        else if (20 <= level && level < 30)
+        {
+            LayoutObjectAtRandom(monsterTiles3, monsterCount, monsterCount);
+        }
+        else if (30 <= level && level < 40)
+        {
+            LayoutObjectAtRandom(monsterTiles4, monsterCount, monsterCount);
+        }
+        else if (40 <= level && level <= 50)
+        {
+            LayoutObjectAtRandom(monsterTiles5, monsterCount, monsterCount);
+        }
         Instantiate(exit, new Vector3(rows - 1, 0F, columns - 1), Quaternion.identity);
     }
 }

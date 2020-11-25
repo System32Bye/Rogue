@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     Vector3 lookDirection;
 
-    private float food;
+    public static float food;
     //----------------------------------------------------------
     //무기 중복 교체 실행 방지
     public static bool isChangeHand = false;
@@ -71,6 +71,8 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip eat_Item;
+    [SerializeField]
+    private GameObject bLock;
 
     [SerializeField]
     private CapsuleCollider PlayercapCol;
@@ -78,13 +80,11 @@ public class Player : MonoBehaviour
     // Use this for initialization
     public void Start()
     {
-        //Player.isChangeHand = true;
 
         food = GameManager.instance.playerFoodPoints;
 
         foodText.text = "Time: " + food;
 
-        //------------------------------------------------------
         for (int i = 0; i < guns.Length; i++)
         {
             gunDictionary.Add(guns[i].gunName, guns[i]);
@@ -97,7 +97,6 @@ public class Player : MonoBehaviour
         {
             axeDictionary.Add(axes[i].closeWeaponName, axes[i]);
         }
-        //------------------------------------------------------
     }
 
     private void OnDisable()
@@ -135,7 +134,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        //-------------------------------------------------
         if (!isChangeHand)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -171,8 +169,18 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Exit")
         {
-            Invoke("Restart", restartLevelDelay);
-            enabled = false;
+            if (GameManager.level != 50)
+            {
+                Invoke("Restart", restartLevelDelay);
+
+                bLock.SetActive(true);
+
+                enabled = false;
+            }
+            else if (GameManager.level == 50)
+            {
+                SceneManager.LoadScene("EndingScene");
+            }
         }
         else if (other.tag == "Food")
         {
@@ -180,6 +188,9 @@ public class Player : MonoBehaviour
             foodText.text = "Time: " + food;
             audioSource.clip = eat_Item;
             audioSource.Play();
+
+            bLock.SetActive(false);
+
             other.gameObject.SetActive(false);
             var clone = Instantiate(food_Text, PlayercapCol.bounds.center, Quaternion.identity);
             Destroy(clone, 1);
@@ -190,6 +201,9 @@ public class Player : MonoBehaviour
             foodText.text = "Time: " + food;
             audioSource.clip = eat_Item;
             audioSource.Play();
+
+            bLock.SetActive(false);
+
             other.gameObject.SetActive(false);
             var clone = Instantiate(soda_Text, PlayercapCol.bounds.center, Quaternion.identity);
             Destroy(clone, 1);
@@ -200,13 +214,6 @@ public class Player : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    /*
-    public void LoseFood(int loss)
-    {
-        food -= loss;
-        foodText.text = "Time: " + (food).ToString("0") + "-" + loss;
-        CheckIfGameOver();
-    }*/
 
     private void CheckIfGameOver()
     {

@@ -27,7 +27,7 @@ public class ChatBox : MonoBehaviour
     {
         var clone = Instantiate(Chats[i], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         clone.transform.parent = transform;
-        Debug.Log("채팅");
+        //Debug.Log("채팅");
         Destroy(clone, 2.0f);
         ChatCheck = false;
     }

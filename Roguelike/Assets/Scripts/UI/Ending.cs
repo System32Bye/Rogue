@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Title : MonoBehaviour
+public class Ending : MonoBehaviour
 {
-    public void ClickStart()
+    public void ClickPlayAgain()
     {
         Debug.Log("로딩");
         GameManager.level = 0;
@@ -13,12 +13,12 @@ public class Title : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    public void ClickTutorial()
+    public void ClickTitle()
     {
         Debug.Log("로딩");
         GameManager.level = 0;
         Player.food = 100;
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void ClickExit()

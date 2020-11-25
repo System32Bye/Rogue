@@ -19,9 +19,17 @@ public abstract class CloseWeaponController : MonoBehaviour
 
     protected bool IsWalk = false;
 
+    //효과음
+    private AudioSource audioSC;
 
     // Update is called once per frame
 
+    private void Start()
+    {
+        Player.currentHand = currentCloseWeapon.GetComponent<Transform>();
+        Player.currentHandAnim = currentCloseWeapon.anim;
+        audioSC = GetComponent<AudioSource>();
+    }
 
     protected void TryWalk()
     {
@@ -42,6 +50,7 @@ public abstract class CloseWeaponController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.C))
         {
+            PlaySE(currentCloseWeapon.atk_Sound);
             if (!isAttack)
             {
                 
@@ -95,5 +104,11 @@ public abstract class CloseWeaponController : MonoBehaviour
         currentCloseWeapon.transform.localPosition = Vector3.zero;
         currentCloseWeapon.gameObject.SetActive(true);
         
+    }
+
+    private void PlaySE(AudioClip _clip)
+    {
+        audioSC.clip = _clip;
+        audioSC.Play();
     }
 }

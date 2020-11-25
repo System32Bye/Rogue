@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
         GameManager.isPause = false;
         GameManager.level = 0;
+        Player.food = 100;
         Time.timeScale = 1f;
     }
 
@@ -56,6 +57,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("TitleScene");
         GameManager.isPause = false;
         GameManager.level = 0;
+        Player.food = 100;
         Time.timeScale = 1f;
     }
 

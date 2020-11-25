@@ -8,13 +8,6 @@ public class AxeController : CloseWeaponController
     //활성화
     public static bool isActivate = true;
 
-
-    private void Start()
-    {
-        Player.currentHand = currentCloseWeapon.GetComponent<Transform>();
-        Player.currentHandAnim = currentCloseWeapon.anim;
-    }
-
     void Update()
     {
         if (isActivate)
@@ -26,8 +19,10 @@ public class AxeController : CloseWeaponController
 
     protected override IEnumerator HitCoroutine()
     {
-        while (isSwing) {
-            if (CheckObject()) {
+        while (isSwing)
+        {
+            if (CheckObject())
+            {
                 if (hitInfo.transform.tag == "Monster") {
                     hitInfo.transform.GetComponent<EnemyControll>().Damage(currentCloseWeapon.damage, transform.position);
                 }

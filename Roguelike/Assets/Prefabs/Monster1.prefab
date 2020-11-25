@@ -401,7 +401,7 @@ MonoBehaviour:
   curState: 0
   attackDelay: 2.3
   traceDist: 3.2
-  attackDist: 0.3
+  attackDist: 0.4
   attackDamage: 5
 --- !u!95 &95231133922416208
 Animator:
@@ -470,10 +470,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.29678863
-  m_Height: 2.0631766
+  m_Radius: 0.3
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0.0063973293, y: 0.7337898, z: -0.00427546}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1157577554318636
 GameObject:
   m_ObjectHideFlags: 0
