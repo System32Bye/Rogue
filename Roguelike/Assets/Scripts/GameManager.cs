@@ -64,7 +64,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver() {
-        levelText.text = "You died on the " + level + " floor.";
+        if (level == 1)
+        {
+            levelText.text = "You died on the " + level + " floor.";
+        }
+        else
+        {
+            levelText.text = "You died on the " + level + " floors.";
+        }
         levelImage.SetActive(true);
         enabled = false;
     }
