@@ -1,7 +1,7 @@
 # Time Rogue
 ### YouTube Link
 --------------------
- https://youtu.be/vFeyINWD1Zg
+ https://youtu.be/OSv4PGYCUNs
 
 
 ### 게임 소개
